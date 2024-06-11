@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brenderful Art</title>
+    <link rel="stylesheet" href="../CSS/Brenda test CSS.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="brand">
+                <h1>Brenderful Art</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="parallax"></div>
+
+    <section class="content">
+        <div class="content-item">
+            <div class="content-text">
+                <h2>About Me</h2>
+                <p>Hi, I'm Brenda</p>
+                <p>I am currently I am living on the West Coast of Australia.</p>
+                <p>Please enjoy and look around my site.  If you have some time, then I encourage you to support me and interact on my social media.</p>
+                <p>Links to my socials are at the bottom of the page</p>
+            </div>
+            <div class="content-image">
+                <img src="../Images/image-1.jpg" alt="About Image">
+            </div>
+        </div>
+        <div class="content-item reverse">
+            <div class="content-text">
+                <h2>Projects</h2>
+                <p>Showcase of artwork.</p>
+            </div>
+            <div class="content-image">
+                <img src="../Images/image-2.jpg" alt="Projects Image">
+            </div>
+        </div>
+        <div class="content-item">
+            <div class="content-text">
+                <h2>Contact</h2>
+                <p>Get in touch with Brenda Muñoz.</p>
+            </div>
+            <div class="content-image">
+                <img src="../Images/image-3.jpg" alt="Contact Image">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-left">
+            <a href="https://www.instagram.com/brenderful/" target="_blank"><img src="../Images/instagram-icon.png" alt="Instagram"></a>
+            <a href="https://www.facebook.com/brenderful/" target="_blank"><img src="../Images/facebook-icon.png" alt="Facebook"></a>
+            <a href="https://x.com/brenderful" target="_blank"><img src="../Images/X-icon.png" alt="Twitter"></a>
+            <a href="https://linktr.ee/brenderful" target="_blank"><img src="../Images/linktree-icon.png" alt="Linktree"></a>
+            <a href="https://brenderful.eth.co/" target="_blank"><img src="../Images/eth-domain-icon.png" alt=".eth Domain"></a>
+            <a href="mailto:brenderful@gmail.com"><img src="../Images/mail-icon.png" alt="Mail"></a>
+            <a href="#" onclick="copyToClipboard('https://www.brenderful.com/')"><img src="../Images/share-icon.png" alt="Share"></a>
+        </div>
+        <div class="footer-right" id="quote">
+            <!-- Quote will be injected here by JavaScript -->
+        </div>
+    </footer>
+
+    <script>
+        function copyToClipboard(text) {
+            var tempInput = document.createElement("input");
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("URL copied to clipboard");
+        }
+
+        const quotes = [
+            "You’re only given a little spark of madness. You mustn’t lose it. – Robin Williams",
+            "Imagination rules the world. – Napoleon Bonaparte",
+            "Creativity takes courage. – Henri Matisse",
+            "Creativity comes from a conflict of ideas. – Donatella Versace",
+            "A hunch is creativity trying to tell you something. – Frank Capra",
+            "Creativity is intelligence having fun. – Albert Einstein",
+            "Replace fear with curiosity. – Steven Spielberg",
+            "The worst enemy to creativity is self-doubt. – Sylvia Plath",
+            "Creativity is just connecting things. – Steve Jobs",
+            "Creativity is a wild mind and a disciplined eye. – Dorothy Parker",
+            "Creativity is the art of concealing your source. – Coco Chanel",
+            "Mystery is at the heart of creativity. That, and surprise. – Julia Cameron",
+            "All creative people want to do the unexpected. – Hedy Lamarr",
+            "Art is the elimination of the unnecessary. – Pablo Picasso",
+            "You use a glass mirror to see your face. You use works of art to see your soul. – George Bernard Shaw",
+            "Don’t wait for inspiration. It comes while working. – Henri Matisse",
+            "Art enables us to find ourselves and lose ourselves at the same time. – Thomas Merton",
+            "Every artist was first an amateur. – Ralph Waldo Emerson",
+            "The worst enemy to creativity is self-doubt. – Sylvia Plath",
+            "Creativity is inventing, experimenting, growing, taking risks, breaking rules, making mistakes, and having fun. – Mary Lou Cook",
+            "It's no good being too easily swayed by people's opinions. You have to believe in yourself. – Donatella Versace",
+            "Create with the heart; build with the mind. – Criss Jami",
+            "You can't use up creativity. The more you use, the more you have. – Maya Angelou",
+            "There is no innovation and creativity without failure. – Brené Brown",
+            "The creative adult is the child who survived. – ​​Ursula Le Guin"
+        ];
+
+        function displayRandomQuote(quotes) {
+            const quoteElement = document.getElementById('quote');
+            if (quotes.length === 0) {
+                quoteElement.textContent = "No quotes available.";
+                return;
+            }
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteElement.textContent = quotes[randomIndex];
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            displayRandomQuote(quotes);
+        });
+    </script>
+</body>
+</html>

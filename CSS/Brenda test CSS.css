@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Fira Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+header {
+    background-color: white;
+    padding: 1em 0;
+    border-bottom: 1px solid lightgray;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+header .brand h1 {
+    margin: 0;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 1.3em;
+    color: #333;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 0.8em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.parallax {
+    background-image: url('../Images/Underwater-screenshot.png');
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+section.content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.content-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 4em 5%; /* Adjust padding to control content width */
+    border-bottom: 1px solid lightgray; /* Add a bottom border for separation */
+}
+
+.content-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.content-text, .content-image {
+    flex: 1;
+    padding: 1em;
+}
+
+.content-image img {
+    width: 75%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+    display: block;
+    margin: 0 auto; /* Center the images */
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 2em;
+    background-color: whitesmoke;
+}
+
+.footer-left a {
+    margin: 0 10px;
+}
+
+.footer-left img {
+    width: 24px;
+    height: 24px;
+}
+
+.footer-right {
+    font-size: 0.8em;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    header .container {
+        flex-direction: column;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        margin: 10px 0;
+    }
+
+    .content-item {
+        flex-direction: column;
+    }
+
+    .content-item.reverse {
+        flex-direction: column;
+    }
+
+    .content-text, .content-image {
+        padding: 0;
+    }
+}
