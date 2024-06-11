@@ -22,15 +22,23 @@ header .container {
     justify-content: space-between;
     align-items: center;
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2em;
+    margin: 0;
+    padding: 0 3em;
+}
+
+header .brand {
+    flex-grow: 1; /* Allow brand to take up remaining space */
 }
 
 header .brand h1 {
     margin: 0;
     font-family: 'Fira Sans', sans-serif;
-    font-size: 1.3em;
+    font-size: 1.5em;
     color: #333;
+}
+
+nav {
+    flex-grow: 0; /* Do not allow nav to grow */
 }
 
 nav ul {
@@ -47,7 +55,7 @@ nav ul li {
 nav ul li a {
     color: #333;
     text-decoration: none;
-    font-size: 0.8em;
+    font-size: 1em;
 }
 
 nav ul li a:hover {
@@ -75,6 +83,21 @@ section.content {
     width: 100%;
     padding: 4em 5%; /* Adjust padding to control content width */
     border-bottom: 1px solid lightgray; /* Add a bottom border for separation */
+    font-size: 1em; /* Set font size */
+    font-weight: normal; /* Set font weight */
+    line-height: 1.5; /* Set line height for better readability */
+    color: #333; /* Set text color */
+}
+
+.content-item h2 {
+    font-size: 2em; /* Larger font size for headings */
+    font-weight: normal; /* Normal font weight for headings */
+    margin-bottom: 0.5em; /* Space below the heading */
+}
+
+.content-item p {
+    font-size: 1em; /* Normal font size for paragraphs */
+    margin-bottom: 1em; /* Space below the paragraphs */
 }
 
 .content-item.reverse {
@@ -114,7 +137,7 @@ footer {
 }
 
 .footer-right {
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: #333;
 }
 
