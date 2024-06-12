@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brenderful Art</title>
+    <title>Brenderful</title>
     <link rel="stylesheet" href="../CSS/Brenda test CSS.css">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="../Images/favicon.png" type="image/favicon">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="brand">
-                <h1>Brenderful Art</h1>
+                <img src="../Images/brand-logo.png" alt="Brenderful">
             </div>
             <nav>
                 <ul>
@@ -20,6 +20,15 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <button class="nav-toggle">&#9776;</button>
+                <div class="dropdown-menu">
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
             </nav>
         </div>
     </header>
@@ -30,10 +39,7 @@
         <div class="content-item">
             <div class="content-text">
                 <h2>About Me</h2>
-                <p>Hi, I'm Brenda</p>
-                <p>I am currently I am living on the West Coast of Australia.</p>
-                <p>Please enjoy and look around my site.  If you have some time, then I encourage you to support me and interact on my social media.</p>
-                <p>Links to my socials are at the bottom of the page</p>
+                <p>Information about Brenda Muñoz and her artistic journey.</p>
             </div>
             <div class="content-image">
                 <img src="../Images/image-1.jpg" alt="About Image">
@@ -123,8 +129,70 @@
             quoteElement.textContent = quotes[randomIndex];
         }
 
+        function updateHeights() {
+            const header = document.querySelector('header');
+            const parallax = document.querySelector('.parallax');
+            const contentItems = document.querySelectorAll('.content-item');
+            const headerHeight = header.offsetHeight;
+            const screenHeight = window.innerHeight;
+            const newHeight = screenHeight - (2 * headerHeight);
+
+            parallax.style.height = `${newHeight}px`;
+
+            contentItems.forEach(item => {
+                item.style.height = `${newHeight}px`;
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             displayRandomQuote(quotes);
+
+            // Initial update of the heights
+            updateHeights();
+
+            // Update the heights on window resize
+            window.addEventListener('resize', updateHeights);
+        });
+
+        // JavaScript to toggle the dropdown menu and handle click outside to close
+        document.querySelector('.nav-toggle').addEventListener('click', (event) => {
+            event.stopPropagation();
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            dropdownMenu.classList.toggle('show');
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.style.display = 'block';
+                setTimeout(() => {
+                    dropdownMenu.style.opacity = '1';
+                }, 0);
+            } else {
+                dropdownMenu.style.opacity = '0';
+                setTimeout(() => {
+                    dropdownMenu.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            const navToggle = document.querySelector('.nav-toggle');
+            if (!navToggle.contains(event.target) && dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+                dropdownMenu.style.opacity = '0';
+                setTimeout(() => {
+                    dropdownMenu.style.display = 'none';
+                }, 500);
+            }
+        });
+
+        document.addEventListener('scroll', () => {
+            const dropdownMenu = document.querySelector('.dropdown-menu');
+            if (dropdownMenu.classList.contains('show')) {
+                dropdownMenu.classList.remove('show');
+                dropdownMenu.style.opacity = '0';
+                setTimeout(() => {
+                    dropdownMenu.style.display = 'none';
+                }, 500);
+            }
         });
     </script>
 </body>

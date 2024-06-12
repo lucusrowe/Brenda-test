@@ -13,21 +13,29 @@ body {
 
 header {
     background-color: white;
-    padding: 1em 0;
+    padding: 0.5em 0;
     border-bottom: 1px solid lightgray;
+    display: flex;
+    align-items: center;
 }
 
 header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
+    width: 100%;
     margin: 0;
     padding: 0 3em;
 }
 
 header .brand {
-    flex-grow: 1; /* Allow brand to take up remaining space */
+    flex-grow: 1;
+}
+
+header .brand img {
+    min-width: 200px;
+    max-width: 10%;
+    height: auto;
 }
 
 header .brand h1 {
@@ -38,7 +46,7 @@ header .brand h1 {
 }
 
 nav {
-    flex-grow: 0; /* Do not allow nav to grow */
+    flex-grow: 0;
 }
 
 nav ul {
@@ -62,13 +70,72 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    align-self: center;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+}
+
+.dropdown-menu.hide {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 10px 20px;
+}
+
+.dropdown-menu ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.dropdown-menu ul li a:hover {
+    text-decoration: underline;
+}
+
 .parallax {
     background-image: url('../Images/Underwater-screenshot.png');
-    height: 500px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+@media (max-width: 768px) {
+    .parallax {
+        background-attachment: scroll; /* Change to scroll for mobile devices */
+    }
 }
 
 section.content {
@@ -80,43 +147,58 @@ section.content {
 .content-item {
     display: flex;
     align-items: center;
+    justify-content: center; /* Ensure the items are centered */
     width: 100%;
-    padding: 4em 5%; /* Adjust padding to control content width */
-    border-bottom: 1px solid lightgray; /* Add a bottom border for separation */
-    font-size: 1em; /* Set font size */
-    font-weight: normal; /* Set font weight */
-    line-height: 1.5; /* Set line height for better readability */
-    color: #333; /* Set text color */
+    padding: 4em 5%;
+    border-bottom: 1px solid lightgray;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333;
 }
 
 .content-item h2 {
-    font-size: 2em; /* Larger font size for headings */
-    font-weight: normal; /* Normal font weight for headings */
-    margin-bottom: 0.5em; /* Space below the heading */
+    font-size: 2em;
+    font-weight: normal;
+    margin-bottom: 0.5em;
 }
 
 .content-item p {
-    font-size: 1em; /* Normal font size for paragraphs */
-    margin-bottom: 1em; /* Space below the paragraphs */
+    font-size: 1em;
+    margin-bottom: 1em;
 }
 
 .content-item.reverse {
     flex-direction: row-reverse;
 }
 
-.content-text, .content-image {
-    flex: 1;
+.content-text {
+    flex: 0 1 40%; /* Ensure the text takes up 40% of the container */
+    padding: 1em;
+    text-align: left; /* Align text to the left */
+    padding-left: 10%; /* Push text towards the center */
+}
+
+.content-item.reverse .content-text {
+    text-align: right; /* Align text to the right for reverse items */
+    padding-right: 10%; /* Push text towards the center */
+}
+
+.content-image {
+    flex: 0 1 60%; /* Ensure the image takes up 60% of the container */
     padding: 1em;
 }
 
 .content-image img {
-    width: 75%;
+    width: 100%;
     max-width: 100%;
+    max-height: 450px;
     height: auto;
+    object-fit: contain; /* Ensures the image maintains its aspect ratio */
     border-radius: 0;
     box-shadow: none;
     display: block;
-    margin: 0 auto; /* Center the images */
+    margin: 0 auto;
 }
 
 footer {
@@ -141,18 +223,58 @@ footer {
     color: #333;
 }
 
-@media (max-width: 600px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
+@media (max-width: 768px) {
     header .container {
+        align-items: center;
+        padding: 0 1em;
+    }
+
+    header .brand {
+        margin: 0;
+    }
+
+    nav ul {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .dropdown-menu ul {
         flex-direction: column;
+        width: 100%;
+    }
+
+    .dropdown-menu ul li {
+        margin: 5px 0;
+    }
+
+    .dropdown-menu ul li a {
+        font-size: 1.2em;
+    }
+
+    .content-item {
+        flex-direction: column;
+        padding: 2em 1em;
+    }
+
+    .content-item.reverse {
+        flex-direction: column;
+    }
+
+    .content-text, .content-image {
+        padding: 1em 0;
+    }
+
+    .content-text {
+        text-align: center; /* Center text for mobile devices */
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .content-image img {
+        width: 100%;
     }
 
     footer {
@@ -163,17 +285,5 @@ footer {
     .footer-left,
     .footer-right {
         margin: 10px 0;
-    }
-
-    .content-item {
-        flex-direction: column;
-    }
-
-    .content-item.reverse {
-        flex-direction: column;
-    }
-
-    .content-text, .content-image {
-        padding: 0;
     }
 }
