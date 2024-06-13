@@ -3,12 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brenderful</title>
-    <link rel="stylesheet" href="../CSS/Brenda test CSS.css?v=1.0">
+    <title>Brenderful Art</title>
+    <link rel="stylesheet" href="../CSS/Brenda test CSS.css">
     <link rel="icon" href="../Images/favicon.png" type="image/favicon">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
 </head>
 <body>
     <header>
@@ -23,51 +20,57 @@
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <button class="nav-toggle">&#9776;</button>
-                <div class="dropdown-menu">
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
+                <button class="nav-toggle">☰</button>
             </nav>
+        </div>
+        <div class="dropdown-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </header>
 
     <div class="parallax"></div>
 
-    <section class="content">
+    <section id="home" class="content">
         <div class="content-item">
+            <div class="content-text">
+                <h2>Welcome to Brenderful Art</h2>
+                <p>Discover the art of Brenda Muñoz.</p>
+            </div>
+            <div class="content-image">
+                <img src="../Images/image-1.jpg" alt="Welcome Image">
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="content">
+        <div class="content-item reverse">
             <div class="content-text">
                 <h2>About Me</h2>
                 <p>Information about Brenda Muñoz and her artistic journey.</p>
             </div>
             <div class="content-image">
-                <img src="../Images/image-1.jpg" alt="About Image">
+                <img src="../Images/image-2.jpg" alt="About Image">
             </div>
         </div>
-        <div class="content-item reverse">
+    </section>
+
+    <section id="projects" class="content">
+        <div class="content-item">
             <div class="content-text">
                 <h2>Projects</h2>
                 <p>Showcase of artwork.</p>
             </div>
             <div class="content-image">
-                <img src="../Images/image-2.jpg" alt="Projects Image">
-            </div>
-        </div>
-        <div class="content-item">
-            <div class="content-text">
-                <h2>Contact</h2>
-                <p>Get in touch with Brenda Muñoz.</p>
-            </div>
-            <div class="content-image">
-                <img src="../Images/image-3.jpg" alt="Contact Image">
+                <img src="../Images/image-3.jpg" alt="Projects Image">
             </div>
         </div>
     </section>
-
+   
     <footer>
         <div class="footer-left">
             <a href="https://www.instagram.com/brenderful/" target="_blank"><img src="../Images/instagram-icon.png" alt="Instagram"></a>
@@ -83,131 +86,6 @@
         </div>
     </footer>
 
-    <script>
-        function copyToClipboard(text) {
-            var tempInput = document.createElement("input");
-            tempInput.value = text;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            alert("URL copied to clipboard");
-        }
-
-        const quotes = [
-            "You’re only given a little spark of madness. You mustn’t lose it. – Robin Williams",
-            "Imagination rules the world. – Napoleon Bonaparte",
-            "Creativity takes courage. – Henri Matisse",
-            "Creativity comes from a conflict of ideas. – Donatella Versace",
-            "A hunch is creativity trying to tell you something. – Frank Capra",
-            "Creativity is intelligence having fun. – Albert Einstein",
-            "Replace fear with curiosity. – Steven Spielberg",
-            "The worst enemy to creativity is self-doubt. – Sylvia Plath",
-            "Creativity is just connecting things. – Steve Jobs",
-            "Creativity is a wild mind and a disciplined eye. – Dorothy Parker",
-            "Creativity is the art of concealing your source. – Coco Chanel",
-            "Mystery is at the heart of creativity. That, and surprise. – Julia Cameron",
-            "All creative people want to do the unexpected. – Hedy Lamarr",
-            "Art is the elimination of the unnecessary. – Pablo Picasso",
-            "You use a glass mirror to see your face. You use works of art to see your soul. – George Bernard Shaw",
-            "Don’t wait for inspiration. It comes while working. – Henri Matisse",
-            "Art enables us to find ourselves and lose ourselves at the same time. – Thomas Merton",
-            "Every artist was first an amateur. – Ralph Waldo Emerson",
-            "The worst enemy to creativity is self-doubt. – Sylvia Plath",
-            "Creativity is inventing, experimenting, growing, taking risks, breaking rules, making mistakes, and having fun. – Mary Lou Cook",
-            "It's no good being too easily swayed by people's opinions. You have to believe in yourself. – Donatella Versace",
-            "Create with the heart; build with the mind. – Criss Jami",
-            "You can't use up creativity. The more you use, the more you have. – Maya Angelou",
-            "There is no innovation and creativity without failure. – Brené Brown",
-            "The creative adult is the child who survived. – ​​Ursula Le Guin"
-        ];
-
-        function displayRandomQuote(quotes) {
-            const quoteElement = document.getElementById('quote');
-            if (quotes.length === 0) {
-                quoteElement.textContent = "No quotes available.";
-                return;
-            }
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            quoteElement.textContent = quotes[randomIndex];
-        }
-
-        function updateHeights() {
-            const header = document.querySelector('header');
-            const parallax = document.querySelector('.parallax');
-            const contentItems = document.querySelectorAll('.content-item');
-            const headerHeight = header.offsetHeight;
-            const screenHeight = window.innerHeight;
-            const newHeight = screenHeight - (2 * headerHeight);
-
-            parallax.style.height = `${newHeight}px`;
-
-            contentItems.forEach(item => {
-                item.style.height = `${newHeight}px`;
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-        displayRandomQuote(quotes);
-
-        // Set header height as a CSS variable
-        const header = document.querySelector('header');
-        const root = document.documentElement;
-        const updateHeaderHeight = () => {
-            root.style.setProperty('--header-height', `${header.offsetHeight}px`);
-        };
-
-        // Initial update of the header height
-        updateHeaderHeight();
-
-        // Update the header height on window resize
-        window.addEventListener('resize', updateHeaderHeight);
-
-        // Toggle dropdown menu
-        const navToggle = document.querySelector('.nav-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-
-        navToggle.addEventListener('click', (event) => {
-            event.stopPropagation();
-            dropdownMenu.classList.toggle('show');
-            if (dropdownMenu.classList.contains('show')) {
-                dropdownMenu.style.display = 'block';
-                setTimeout(() => {
-                    dropdownMenu.style.opacity = '1';
-                }, 10);
-            } else {
-                dropdownMenu.style.opacity = '0';
-                setTimeout(() => {
-                    dropdownMenu.style.display = 'none';
-                }, 500);
-            }
-        });
-
-        // Hide dropdown on scroll
-        window.addEventListener('scroll', () => {
-            if (dropdownMenu.classList.contains('show')) {
-                dropdownMenu.classList.remove('show');
-                dropdownMenu.style.opacity = '0';
-                setTimeout(() => {
-                    dropdownMenu.style.display = 'none';
-                }, 500);
-            }
-        });
-
-        // Hide dropdown on click outside
-        document.addEventListener('click', (event) => {
-            if (!dropdownMenu.contains(event.target) && !navToggle.contains(event.target)) {
-                if (dropdownMenu.classList.contains('show')) {
-                    dropdownMenu.classList.remove('show');
-                    dropdownMenu.style.opacity = '0';
-                    setTimeout(() => {
-                        dropdownMenu.style.display = 'none';
-                    }, 500);
-                }
-            }
-        });
-    });
-
-    </script>
+    <script src="../JS/main.js"></script>
 </body>
 </html>
