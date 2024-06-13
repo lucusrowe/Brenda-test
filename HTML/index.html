@@ -148,25 +148,33 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            displayRandomQuote(quotes);
+        displayRandomQuote(quotes);
 
-            // Initial update of the heights
-            updateHeights();
+        // Set header height as a CSS variable
+        const header = document.querySelector('header');
+        const root = document.documentElement;
+        const updateHeaderHeight = () => {
+            root.style.setProperty('--header-height', `${header.offsetHeight}px`);
+        };
 
-            // Update the heights on window resize
-            window.addEventListener('resize', updateHeights);
-        });
+        // Initial update of the header height
+        updateHeaderHeight();
 
-        // JavaScript to toggle the dropdown menu and handle click outside to close
-        document.querySelector('.nav-toggle').addEventListener('click', (event) => {
+        // Update the header height on window resize
+        window.addEventListener('resize', updateHeaderHeight);
+
+        // Toggle dropdown menu
+        const navToggle = document.querySelector('.nav-toggle');
+        const dropdownMenu = document.querySelector('.dropdown-menu');
+
+        navToggle.addEventListener('click', (event) => {
             event.stopPropagation();
-            const dropdownMenu = document.querySelector('.dropdown-menu');
             dropdownMenu.classList.toggle('show');
             if (dropdownMenu.classList.contains('show')) {
                 dropdownMenu.style.display = 'block';
                 setTimeout(() => {
                     dropdownMenu.style.opacity = '1';
-                }, 0);
+                }, 10);
             } else {
                 dropdownMenu.style.opacity = '0';
                 setTimeout(() => {
@@ -175,20 +183,8 @@
             }
         });
 
-        document.addEventListener('click', (event) => {
-            const dropdownMenu = document.querySelector('.dropdown-menu');
-            const navToggle = document.querySelector('.nav-toggle');
-            if (!navToggle.contains(event.target) && dropdownMenu.classList.contains('show')) {
-                dropdownMenu.classList.remove('show');
-                dropdownMenu.style.opacity = '0';
-                setTimeout(() => {
-                    dropdownMenu.style.display = 'none';
-                }, 500);
-            }
-        });
-
-        document.addEventListener('scroll', () => {
-            const dropdownMenu = document.querySelector('.dropdown-menu');
+        // Hide dropdown on scroll
+        window.addEventListener('scroll', () => {
             if (dropdownMenu.classList.contains('show')) {
                 dropdownMenu.classList.remove('show');
                 dropdownMenu.style.opacity = '0';
@@ -197,6 +193,21 @@
                 }, 500);
             }
         });
+
+        // Hide dropdown on click outside
+        document.addEventListener('click', (event) => {
+            if (!dropdownMenu.contains(event.target) && !navToggle.contains(event.target)) {
+                if (dropdownMenu.classList.contains('show')) {
+                    dropdownMenu.classList.remove('show');
+                    dropdownMenu.style.opacity = '0';
+                    setTimeout(() => {
+                        dropdownMenu.style.display = 'none';
+                    }, 500);
+                }
+            }
+        });
+    });
+
     </script>
 </body>
 </html>
